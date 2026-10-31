@@ -1,0 +1,12 @@
+/* A compact, consistent key outside the interactive canvas. */
+.energy-legend{padding:20px 28px;overflow:visible}
+.energy-legend h2{font-size:20px;line-height:1.2;margin:10px 0 18px}
+.energy-legend .legend-grid{display:grid;gap:12px 20px}
+.energy-legend .role-key{grid-template-columns:repeat(6,minmax(0,1fr))}
+.energy-legend .relationship-key{grid-template-columns:repeat(5,minmax(0,1fr))}
+.energy-legend .legend-grid>div{display:flex;align-items:center;gap:10px;min-width:0;font-family:inherit;font-size:13px;font-weight:600;line-height:1.35}
+.energy-legend .legend-grid h3{font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;margin:0}
+.energy-legend .legend-grid i{width:16px;height:16px;flex:0 0 16px;margin:0;border:1px solid rgba(0,0,0,.25)}
+.energy-legend .legend-group-label{font-family:inherit;font-size:12px;line-height:1.3;font-weight:700;margin:18px 0 12px}
+@media(max-width:1000px){.energy-legend .role-key,.energy-legend .relationship-key{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:550px){.energy-legend{padding:18px}.energy-legend .role-key,.energy-legend .relationship-key{grid-template-columns:repeat(2,minmax(0,1fr))}.energy-legend .legend-grid{gap:10px}.energy-legend .legend-grid>div{font-size:12px}}

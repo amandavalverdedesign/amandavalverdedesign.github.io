@@ -1,0 +1,16 @@
+/* Shared by every interactive systems explorer. */
+.legend-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.legend-heading a{font-size:12px;font-weight:700}.energy-legend{overflow:visible}.energy-legend .legend-grid article{min-width:0}
+.map-divider{display:none}
+@media(min-width:900px){main{grid-template-columns:180px minmax(240px,1fr) 14px var(--notes-width,300px)}.notes-shell{grid-column:4;position:relative;top:auto}#notes{border-left:0;max-height:720px}.map-divider{display:flex;align-items:center;justify-content:center;cursor:col-resize;touch-action:none;background:#e0ded8;border:0;border-inline:1px solid #b8b8b0;padding:0;min-width:14px;outline-offset:-2px}.map-divider::after{content:'';height:44px;width:3px;border-radius:3px;background:currentColor}.map-divider:hover,.map-divider:focus-visible{background:#131610;color:#f0eeea}.notes-more{width:100%}}
+@media(max-width:899px){main{grid-template-columns:180px minmax(0,1fr)}.notes-shell{grid-column:1/-1;position:relative}#notes{max-height:none;overflow:visible;border-top:1px solid}.notes-more{display:none}}
+@media(max-width:600px){main{display:block}}
+
+.compact-legend{padding:18px 28px;font-family:Batica,Arial,sans-serif}
+.compact-legend h2{font-family:inherit;font-size:20px;margin:8px 0 16px}
+.compact-legend-group{display:grid;grid-template-columns:140px minmax(0,1fr);gap:16px;align-items:start;padding:12px 0;border-top:1px solid #c7c5bf}
+.compact-legend-group h3{font:700 12px/1.4 Batica,Arial,sans-serif;margin:0}
+.compact-legend-group ul{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px 18px;list-style:none;padding:0;margin:0}
+.compact-legend-group li{display:flex;align-items:center;gap:8px;min-width:0;font:400 13px/1.4 Batica,Arial,sans-serif}
+.compact-legend-group i{width:14px;height:14px;margin:0;border:1px solid #868680}
+@media(max-width:1100px){.compact-legend-group ul{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.compact-legend{padding:16px}.compact-legend-group{grid-template-columns:1fr;gap:10px}.compact-legend-group ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.compact-legend .legend-heading{gap:8px}.compact-legend h2{font-size:18px}}

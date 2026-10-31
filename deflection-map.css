@@ -1,0 +1,5 @@
+body{font-family:Batica,Arial,sans-serif}.filter-help{font-size:12px;margin-top:20px}.map-node:hover rect,.map-node:focus-visible rect{stroke:#131610;stroke-width:3}.map-node[aria-pressed=true] rect{stroke:#131610;stroke-width:5}#notes button{display:block;max-width:100%;text-align:left}#notes li p{font-size:13px}.selection-kind{font-size:12px;border-block:1px solid #bbb;padding:10px 0}.energy-legend>p{max-width:100ch}.energy-legend small{max-width:110ch}.canvas-wrap{background:#fff}#canvas{height:620px}.filters #compare{font-size:12px}.compact-legend{border-top:1px solid #bbb}
+@media(max-width:600px){#canvas{height:460px}.toolbar{gap:6px}.toolbar button{font-size:12px;padding:8px}.filters{display:block}.filters fieldset{margin-bottom:16px}}
+
+/* Keep pan/zoom content inset from the frame at every viewport size. */
+#canvas{padding:20px}#canvas svg{overflow:hidden}.hint{padding-inline:20px}
