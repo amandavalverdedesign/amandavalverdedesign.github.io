@@ -2503,5 +2503,18 @@ footer { border-top: 2px solid var(--ink); background: var(--cream); }
 }
 
 /* Keep contact details open beneath the introduction and separate role resources. */
-.contact-links > .contact-link:first-child { border-top: 0; }
+.contact-links > .contact-link:first-child { border-top: 2px solid var(--ink); }
 .role-presentation-link { display: inline-block; margin-top: 1.5rem; }
+
+.mrt-metrics { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1rem; margin:1.5rem 0; }
+.mrt-metrics > div { border:2px solid var(--ink); padding:1.25rem; }
+.mrt-metrics dt { font-family:var(--display); font-size:clamp(1.6rem,2.5vw,3rem); line-height:1.1; font-weight:700; }
+.mrt-metrics dd { margin:.75rem 0 0; font-size:.9rem; line-height:1.5; }
+.mrt-impact .mrt-source { font-size:.8rem; margin-bottom:2rem; }
+.mrt-impact .mrt-testimonial { margin:2rem 0 0; padding:1.5rem; border-left:3px solid var(--ink); text-transform:none; font-size:1rem; line-height:1.65; }
+.mrt-testimonial p { font-size:1rem; text-transform:none; line-height:1.65; }
+.mrt-testimonial cite { display:block; margin-top:1rem; font-size:.8rem; font-style:normal; }
+@media(max-width:900px){.mrt-metrics{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:480px){.mrt-metrics{grid-template-columns:1fr;}}
+
+.mrt-testimonial::before { content:none; }
