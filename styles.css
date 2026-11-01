@@ -2501,3 +2501,7 @@ footer { border-top: 2px solid var(--ink); background: var(--cream); }
   font-size: .85rem;
   line-height: 1.6;
 }
+
+/* Keep contact details open beneath the introduction and separate role resources. */
+.contact-links > .contact-link:first-child { border-top: 0; }
+.role-presentation-link { display: inline-block; margin-top: 1.5rem; }
