@@ -2336,7 +2336,7 @@ footer { border-top: 2px solid var(--ink); background: var(--cream); }
 /* Center the visible composition and close the gap created by the SVG canvas. */
 @media (min-width: 901px) {
  .hero-name-block { transform: translateX(5.6vw); }
- .hero-message.mac-showcase { transform: translateX(calc(-18% + 2.6vw)) scale(1.15); }
+ .hero-message.mac-showcase { transform: translateX(calc(-18% + 2.6vw + 25px)) scale(1.15); }
 }
 
 /* Preserve the card iceberg silhouette and add restrained drive contours. */
