@@ -284,8 +284,9 @@ window.addEventListener('message',event=>{if(event.origin!==location.origin||eve
 
   const art=entry.project.querySelector('.project-visual img, .project-visual svg').cloneNode(true);art.removeAttribute('id');art.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));art.removeAttribute('aria-labelledby');art.removeAttribute('loading');return art;
  };
+ const externalArrow = '<svg class="arrow-icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="#arrow-external"/></svg>';
  const choose=(event,entry)=>{event.preventDefault();document.querySelectorAll('.browse-selected').forEach(el=>el.classList.remove('browse-selected'));const target=document.getElementById(entry.id);target.classList.add('browse-selected');document.documentElement.classList.remove('grid-locked');const toggle=target.querySelector('.project-toggle');if(toggle)setProjectOpen(toggle,true);location.hash=entry.id;target.scrollIntoView({behavior:'smooth',block:'start'});};
- entries.forEach(entry=>{const card=document.createElement('a');card.className='browse-card';card.href='#'+entry.id;const art=document.createElement('div');art.className='browse-art';art.append(artwork(entry));const copy=document.createElement('div');copy.className='browse-card-copy';const h=document.createElement('h3');h.textContent=entry.title+' ↗';const p=document.createElement('p');p.textContent=entry.id==='about'?entry.summary:entry.kicker;copy.append(h,p);card.append(art,copy);card.addEventListener('click',event=>choose(event,entry));grid.append(card);});
+ entries.forEach(entry=>{const card=document.createElement('a');card.className='browse-card';card.href='#'+entry.id;const art=document.createElement('div');art.className='browse-art';art.append(artwork(entry));const copy=document.createElement('div');copy.className='browse-card-copy';const h=document.createElement('h3');h.textContent=entry.title+' ';h.insertAdjacentHTML('beforeend',externalArrow);const p=document.createElement('p');p.textContent=entry.id==='about'?entry.summary:entry.kicker;copy.append(h,p);card.append(art,copy);card.addEventListener('click',event=>choose(event,entry));grid.append(card);});
  const homes=projects.map(project=>{const marker=document.createComment('Project home');project.before(marker);return marker;});
  const slide=document.createElement('article');slide.className='project gallery-about';
  const entry=about;
@@ -297,7 +298,7 @@ window.addEventListener('message',event=>{if(event.origin!==location.origin||eve
    const summary=document.createElement('p');summary.textContent=about.summary;
    const label=document.createElement('h4');label.textContent='Skills & areas of interest';
    const skills=document.createElement('div');skills.className='interest-cloud';document.querySelectorAll('#about .interest-cloud span').forEach(skill=>skills.append(skill.cloneNode(true)));
-   const link=document.createElement('a');link.href='#about';link.className='browse-open';link.textContent='About & connect ↗';link.addEventListener('click',event=>choose(event,entry));
+   const link=document.createElement('a');link.href='#about';link.className='browse-open';link.innerHTML='About &amp; connect '+externalArrow;link.addEventListener('click',event=>choose(event,entry));
    copy.append(title,summary,label,skills,link);slide.append(heading,visual,copy);
 
  const aboutCard=slide;
@@ -313,7 +314,7 @@ window.addEventListener('message',event=>{if(event.origin!==location.origin||eve
  const energyLive=document.querySelector('#culture-decoder .site-preview').cloneNode(true);
  energyLive.setAttribute('aria-label','Live preview of Civic Energy');
  energyLive.querySelector('strong').textContent='Civic Energy';
- const energyLink=energyLive.querySelector('a');energyLink.href='https://karen-happuch.github.io/civic-energy/';energyLink.innerHTML='View the website <span aria-hidden="true">↗</span>';energyLink.setAttribute('aria-label','View Civic Energy (opens in a new tab)');
+ const energyLink=energyLive.querySelector('a');energyLink.href='https://karen-happuch.github.io/civic-energy/';energyLink.innerHTML='View the website <span aria-hidden="true">'+externalArrow+'</span>';energyLink.setAttribute('aria-label','View Civic Energy (opens in a new tab)');
  const energyFrame=energyLive.querySelector('iframe');energyFrame.src='civic-energy-preview.html';energyFrame.title='Live preview of Civic Energy';energyFrame.loading='eager';
  const galleryCards=[...projects,aboutCard];
  const render=i=>{active=(i+entries.length)%entries.length;galleryCards.forEach((card,n)=>card.hidden=n!==active);progress.value=active+1;panel.querySelector('#browse-title').textContent=entries[active].id==='about'?'Let’s make the complicated feel possible.':'Explore the work';panel.querySelector('.browse-counter').textContent=`${String(active+1).padStart(2,'0')} / 06`;};
