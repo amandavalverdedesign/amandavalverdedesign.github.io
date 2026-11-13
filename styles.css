@@ -2869,8 +2869,8 @@ body:not([data-work-view]) .work-section > #clefshift > .project-visual img {
 /* Phone and tablet controls share a centered, fixed top-toolbar position. */
 @media (max-width:1180px) {
  .quick-top,.browse-controls {top:calc(16px + env(safe-area-inset-top));bottom:auto!important;right:auto!important;transform:none!important}
- .quick-top {left:calc(50% - 92px);width:40px;height:40px}
- .browse-controls {left:calc(50% - 44px);display:flex;gap:8px}
+ .quick-top {left:calc(50% - 20px);width:40px;height:40px}
+ .browse-controls {left:calc(50% + 4px);display:flex;gap:8px}
  .browse-controls button {width:40px;height:40px;flex:0 0 40px}
  .site-header,.site-header.is-scrolled {min-height:76px;padding:16px;align-items:center}
  .site-header .menu-toggle {position:fixed;top:calc(16px + env(safe-area-inset-top));left:16px;width:40px;height:40px}
@@ -2893,8 +2893,8 @@ body:not([data-work-view]) .work-section > #clefshift > .project-visual img {
 @media(max-width:480px){
  .site-header > .theme-toggle .theme-label {display:none}
  .site-header > .theme-toggle {padding:5px;right:12px}
- .quick-top {left:calc(50% - 81px);width:36px;height:36px}
- .browse-controls {left:calc(50% - 39px);gap:6px}
+ .quick-top {left:calc(50% - 18px);width:36px;height:36px}
+ .browse-controls {left:calc(50% + 3px);gap:6px}
  .browse-controls button {width:36px;height:36px;flex-basis:36px}
  .site-header .menu-toggle {width:36px;height:36px}
 }
@@ -2944,6 +2944,7 @@ svg.arrow-icon {
 }
 
 @media (max-width: 1180px), (max-width: 1400px) and (hover: none) and (pointer: coarse) {
+ .browse-controls { display:none; }
  .hero {
   --hero-top:calc(4.75rem + env(safe-area-inset-top));
   --hero-bottom:calc(clamp(1.75rem, 5svh, 3rem) + env(safe-area-inset-bottom));

@@ -389,6 +389,10 @@ window.addEventListener('message',event=>{if(event.origin!==location.origin||eve
  requestAnimationFrame(()=>{positionQuickTop();align();});
  };
  buttons.forEach(button=>{button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>setMode(mode===button.dataset.browse?null:button.dataset.browse));});
+ const responsiveLanding = matchMedia('(max-width: 1180px), (max-width: 1400px) and (hover: none) and (pointer: coarse)');
+ responsiveLanding.addEventListener('change', event => {
+  if (event.matches && mode) setMode(null);
+ });
  document.querySelector('.browse-home').addEventListener('click',()=>{
   if(mode)setMode(null);
   quickTop.click();
