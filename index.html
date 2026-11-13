@@ -27,8 +27,8 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="styles.css?v=hero-visible-spacing" />
-    <script src="script.js?v=responsive-arrows" defer></script>
+    <link rel="stylesheet" href="styles.css?v=responsive-intro-width" />
+    <script src="script.js?v=playback-and-viewport" defer></script>
     <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
   </head>
   <body>
@@ -103,7 +103,12 @@
             </div>
             <button class="mac-prev" type="button" aria-label="Previous case study">&lt;</button><button class="mac-next" type="button" aria-label="Next case study">&gt;</button>
             <div class="mac-description" id="mac-description" aria-live="polite"></div>
-            <button class="mac-pause" type="button" aria-label="Pause case study slideshow">Ⅱ</button>
+            <button class="mac-pause" type="button" aria-label="Pause case study slideshow">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path class="mac-pause-icon" d="M7 5h3v14H7z M14 5h3v14h-3z"/>
+                <path class="mac-play-icon" d="M8 4l12 8-12 8z"/>
+              </svg>
+            </button>
           </div>
           </div>
         </div>

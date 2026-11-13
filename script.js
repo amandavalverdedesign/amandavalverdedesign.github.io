@@ -229,7 +229,10 @@ if (document.fonts?.ready) document.fonts.ready.then(positionQuickTop);
  screen.addEventListener('focusout', () => setTimeout(hideDescription, 0));
  const motion = matchMedia('(prefers-reduced-motion: reduce)');
  let paused = motion.matches, active = 0;
- const update = () => { pause.textContent = paused ? '▷' : 'Ⅱ'; pause.setAttribute('aria-label', paused ? 'Play case study slideshow' : 'Pause case study slideshow'); };
+ const update = () => {
+  pause.toggleAttribute('data-paused', paused);
+  pause.setAttribute('aria-label', paused ? 'Play case study slideshow' : 'Pause case study slideshow');
+ };
  pause.addEventListener('click', () => { paused = !paused; update(); });
  motion.addEventListener('change', e => { paused = e.matches; update(); });
  const step = direction => { slides[active].hidden = true; active = (active + direction + slides.length) % slides.length; slides[active].hidden = false; writeDescription(); };
