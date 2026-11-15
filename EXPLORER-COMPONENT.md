@@ -1,2 +1,4 @@
 # Interactive systems explorer convention
 All new systems explorers must include `systems-explorer.css` after their own stylesheet and `systems-explorer.js` after their own behavior script. Use `main` with `.filters`, `.canvas-wrap`, and `.notes-shell` containing `#notes`. The shared component inserts the draggable, keyboard-accessible map/notes divider and reports document height to the portfolio to prevent nested document scrolling. Embed using `.interactive-map-embed iframe`; keep any legend outside the pan/zoom canvas. On narrow screens notes become full-width and expand with their content.
+
+Shared typography and base layout live in `systems-map-base.css`. Do not import `healthcare-map.css` into other explorers: it contains the healthcare-only five-column sidebar layout. `energy-map.css` imports the shared baseline for the energy, relationships, and Deflection Point explorers.
