@@ -185,3 +185,14 @@ These are verification and maintenance items, not claims that each is currently 
 - Refresh the Civic Energy snapshot when the source website changes; document its external dependencies.
 - Consider a clear fallback for remote previews if assets fail or framing is blocked.
 - Refresh old README notes and add a repeatable layout/regression checklist. There is no comprehensive automated browser test suite established for these latest changes.
+
+
+## November 15, 2026 update
+
+Civic Energy links and all active iframe previews now use https://amandavalverde.design/civicenergy/ (journey links retain their fragments). This supersedes the snapshot behavior described above. About anchor spacing measures the responsive header and section padding. Case-study images warm in a low-priority two-request queue, including nested closed disclosures; intrinsic image dimensions reduce layout shifts. Browser verification at 430px: About label sits 16px below the header; all 32 case-study images loaded without expanding the studies. Changes are local and have not been deployed.
+
+Portrait design rule: every profile frame has a true semicircular top, with equal horizontal and vertical corner radii of half its rendered width. A ResizeObserver applies this to the main portrait and grid/gallery portraits, independently of frame height. Preserve this rule when changing responsive layouts.
+
+## Healthcare map readability update
+
+`healthcare-map-layout.js` regenerates all 53 relationship visuals with cubic curves, samples candidate routes against node bounds, and distributes endpoint slots around each node to separate arrowheads. It retains edge IDs, colors, keyboard targets, filters, and pathway notes. Labels use collision-checked positions, appear only at readable scale, and include leaders when offset from their connections. Explicit edge selection zooms to the relationship when its label is hidden; subsequent zoom/pan does not auto-recenter. At overview scale, relationship wording remains available through selection and systems-thinking notes. Dense central and long-distance connections were checked in the browser, including manual zoom-out after selection. Some line crossings remain inherent to the dense network.

@@ -3031,3 +3031,19 @@ svg.arrow-icon {
  body { padding-bottom:calc(12px + env(safe-area-inset-bottom)); }
  .site-header,.site-header.is-scrolled { background:var(--paper); }
 }
+
+/* Match spacing in the existing stacked biography layout. */
+@media (max-width: 760px) {
+  .about-section { --about-portrait-gap: clamp(2rem, 4vw, 4rem); }
+  .about-section .about-eyebrow { margin-bottom: var(--about-portrait-gap); }
+  .about-section .about-grid {
+    row-gap: calc(var(--about-portrait-gap) + var(--about-shadow-offset));
+  }
+  .about-section .bio-intro-row { margin-top: 0; }
+  .about-section .about-lead h2 { margin-top: 0; }
+}
+
+/* Enlarge only on phones, independently of the site's wider layout breakpoint. */
+@media (max-width: 480px) {
+  .about-section .about-portrait { width: 100%; max-width: 24rem; }
+}

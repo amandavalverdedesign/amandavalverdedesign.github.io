@@ -200,3 +200,136 @@ const pathwayNotes = {
     "How could coverage outcomes be reviewed for inequity, and how could affected residents challenge decisions through supported channels?"
   ]
 };
+
+// Additional user-specified pathways; interpretive notes, not measured findings.
+Object.assign(pathwayNotes, {
+  "136": [
+    "shapes curriculum priorities",
+    "Cultural assumptions about disability can shape what training treats as normal, relevant, or worth investigating.",
+    "How could disability-led curriculum review challenge assumptions before they become clinical routines?"
+  ],
+  "137": [
+    "influences gatekeeping behavior",
+    "Ableist assumptions can enter scheduling, intake, and accommodation decisions before a resident reaches a clinician.",
+    "How could intake policies and staff support make accommodation requests routine rather than discretionary?"
+  ],
+  "138": [
+    "informs risk assessment / reproduces inequity",
+    "Biased algorithmic inputs or models can influence clinical risk judgments and reproduce gaps in assessment.",
+    "How could clinicians inspect model limitations and challenge a risk score against the resident’s context?"
+  ],
+  "139": [
+    "automates approval decisions / embeds bias",
+    "Automated coverage workflows can carry biased assumptions into approvals or denials, making inequity harder to see.",
+    "How could coverage decisions expose their reasoning and provide accessible human review?"
+  ],
+  "140": [
+    "shares billing and diagnostic data",
+    "Diagnostic and billing records connect care documentation to coverage workflows; missing context can travel with the record.",
+    "How could residents and care teams correct incomplete data before it affects a coverage decision?"
+  ],
+  "141": [
+    "advocates for policy reform",
+    "Disability advocacy can translate recurring access barriers into proposals and accountability demands for state policymakers.",
+    "How could policy consultations include accessible participation and feedback on how testimony shaped proposals?"
+  ],
+  "142": [
+    "defines funding and eligibility rules",
+    "State policy choices shape program resources and eligibility within the wider federal-state framework.",
+    "How could changes to eligibility or funding be explained early and paired with navigation support?"
+  ],
+  "143": [
+    "legislates coverage frameworks",
+    "Federal legislation establishes coverage frameworks that influence the routes available through Medicare.",
+    "How could residents’ access barriers inform review of coverage frameworks?"
+  ],
+  "144": [
+    "shares lived experience / informs advocacy",
+    "Lived experience moves from information sharing into collective advocacy when residents can influence how their stories are interpreted and used.",
+    "How could consent, accessible participation, and feedback keep residents in control of advocacy narratives?"
+  ],
+  "145": [
+    "verifies eligibility / enforces bureaucratic barriers",
+    "Eligibility checks connect intake to insurance rules; unclear requirements can delay access and place administrative work on residents.",
+    "How could verification failures trigger assistance and clear next steps instead of a dead end?"
+  ],
+  "146": [
+    "refers patients to social services",
+    "Clinic referrals can connect clinical care to community support, but the handoff needs an accessible route and follow-through.",
+    "How could a referral confirm that the resident reached an appropriate service without requiring repeated storytelling?"
+  ],
+  "147": [
+    "serves as training site / reinforces norms",
+    "Hospital placements transmit practical knowledge and professional norms. The gray-to-red transition marks the potential to reinforce harmful norms, not an inevitable outcome.",
+    "How could trainee feedback and disability-led supervision interrupt harmful practices in training environments?"
+  ],
+  "148": [
+    "negotiates drug pricing / influences formularies",
+    "Pricing negotiations and formulary choices connect commercial influence to which medicines are practically accessible.",
+    "How could formulary changes and exceptions be communicated clearly enough to protect continuity of care?"
+  ]
+});
+
+// Proposed policy and communication pathways, developed from the project framing.
+Object.assign(pathwayNotes, {
+  "149": [
+    "guides program priorities / resource allocation",
+    "Policy frameworks provide priorities that public-health departments interpret through programs and resource decisions. An equity commitment does not by itself establish accessible delivery.",
+    "How could disability-specific access measures connect policy priorities to allocation decisions and service outcomes?"
+  ],
+  "150": [
+    "shapes institutional access policies",
+    "Public-health frameworks can inform hospital access policies, but implementation depends on institutional decisions, staffing, and accountability.",
+    "Who checks whether an institutional access policy results in accessible appointments, facilities, and care?"
+  ],
+  "151": [
+    "guides preventive care / equity priorities",
+    "Frameworks can orient community clinics toward prevention and equitable access; local capacity shapes how these priorities reach residents.",
+    "How could clinics identify whose preventive care needs remain unmet and feed those gaps back into planning?"
+  ],
+  "152": [
+    "advocates for disability-inclusive priorities",
+    "Advocacy organizations can bring lived experience and recurring barriers into policy agendas. Meaningful participation requires influence over priorities, not simply consultation.",
+    "How could residents see which advocacy recommendations changed a framework and why others were not adopted?"
+  ],
+  "153": [
+    "informs policy revision through implementation feedback",
+    "Implementation experience can reveal gaps between policy intent and access in practice. This return pathway represents an opportunity for learning, not proof that feedback is acted on.",
+    "What process turns reported access barriers into reviewed policy changes with named responsibility and follow-up?"
+  ],
+  "154": [
+    "communicates care information / may create access barriers",
+    "Portals, appointment messages, and language-access tools convey care information. Inaccessible formats, channels, language, or response processes can turn that exchange into an access constraint.",
+    "Can residents receive, understand, and respond through their preferred accessible communication methods, with alternatives when a channel fails?"
+  ],
+  "155": [
+    "communicates access needs / reports barriers",
+    "Residents use communication channels to share accommodation preferences, ask questions, and report problems. Accessible submission alone does not guarantee a response or correction.",
+    "Can residents track whether an access request was received, assigned, and resolved without repeatedly disclosing the same information?"
+  ],
+  "156": [
+    "configures scheduling / manages appointment messages",
+    "Administrative staff translate scheduling practices into messages, reminders, and communication workflows. Configuration choices influence whether residents can act on appointment information.",
+    "How could staff verify communication preferences and provide accessible alternatives when automated reminders or scheduling tools fail?"
+  ],
+  "157": [
+    "relays patient questions / accommodation needs",
+    "Communication systems can carry questions and access preferences to clinicians; incomplete routing or unclear ownership can leave important context unseen.",
+    "How could care teams confirm that accommodation needs reached the person responsible before the visit?"
+  ],
+  "158": [
+    "supplies records / powers patient-facing information",
+    "Clinical records can supply results, visit information, and other content to patient-facing channels. Accuracy, understandable language, and accessible presentation all affect its usefulness.",
+    "How could residents identify and correct confusing or incomplete information before it disrupts their next step in care?"
+  ],
+  "159": [
+    "records patient messages / updates access preferences",
+    "Messages and access preferences can flow back into the clinical record. The proposed connection highlights continuity across handoffs while recognizing the need for consent and appropriate access.",
+    "How could residents review and update communication preferences, and know which care teams can see them?"
+  ],
+  "111": [
+    "provides navigation support / fills care gaps",
+    "Community-based organizations can help residents navigate services, understand care messages, and use accessible communication channels or alternatives to digital tools. This extends the existing support pathway rather than creating a duplicate connection.",
+    "How could communication and digital-navigation support respect resident preferences, protect privacy, and reduce burden without substituting for accessible healthcare services?"
+  ]
+});

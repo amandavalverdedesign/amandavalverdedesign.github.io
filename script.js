@@ -282,7 +282,7 @@ window.addEventListener('message',event=>{if(event.origin!==location.origin||eve
  entries.push(about);
  let mode=null,active=0,physical=1,settleTimer,returnY=0,initializing=false;
  const artwork=entry=>{
-  if(entry.id==='power-in-common'||entry.id==='culture-decoder'){const art=document.createElement('div');art.className='browse-live-site';const frame=document.createElement('iframe');frame.src=entry.id==='power-in-common'?'civic-energy-preview.html':'https://amandavalverde.design/culturedecoderapp/';frame.title=entry.title+' live website preview';frame.loading='eager';frame.tabIndex=-1;art.append(frame);new ResizeObserver(()=>{const scale=(art.clientWidth+2)/1440;frame.style.transform='scale('+scale+')';frame.style.height=Math.max(600,(art.clientHeight+2)/(scale||1))+'px';}).observe(art);return art;}
+  if(entry.id==='power-in-common'||entry.id==='culture-decoder'){const art=document.createElement('div');art.className='browse-live-site';const frame=document.createElement('iframe');frame.src=entry.id==='power-in-common'?'https://amandavalverde.design/civicenergy/':'https://amandavalverde.design/culturedecoderapp/';frame.title=entry.title+' live website preview';frame.loading='eager';frame.tabIndex=-1;art.append(frame);new ResizeObserver(()=>{const scale=(art.clientWidth+2)/1440;frame.style.transform='scale('+scale+')';frame.style.height=Math.max(600,(art.clientHeight+2)/(scale||1))+'px';}).observe(art);return art;}
   if(entry.id==='about'){const art=document.createElement('div');art.className='browse-about-art';const photo=document.querySelector('#about .portrait-frame img').cloneNode();photo.removeAttribute('loading');const copy=document.createElement('p');['Warm research brain.','Graphic design heart.','Systems appetite.'].forEach(sentence=>{const line=document.createElement('span');line.textContent=sentence;copy.append(line);});const frame=document.createElement('div');frame.className='browse-portrait';frame.append(photo);art.append(frame,copy);return art;}
 
   const art=entry.project.querySelector('.project-visual img, .project-visual svg').cloneNode(true);art.removeAttribute('id');art.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));art.removeAttribute('aria-labelledby');art.removeAttribute('loading');return art;
@@ -317,8 +317,8 @@ window.addEventListener('message',event=>{if(event.origin!==location.origin||eve
  const energyLive=document.querySelector('#culture-decoder .site-preview').cloneNode(true);
  energyLive.setAttribute('aria-label','Live preview of Civic Energy');
  energyLive.querySelector('strong').textContent='Civic Energy';
- const energyLink=energyLive.querySelector('a');energyLink.href='https://karen-happuch.github.io/civic-energy/';energyLink.innerHTML='View the website <span aria-hidden="true">'+externalArrow+'</span>';energyLink.setAttribute('aria-label','View Civic Energy (opens in a new tab)');
- const energyFrame=energyLive.querySelector('iframe');energyFrame.src='civic-energy-preview.html';energyFrame.title='Live preview of Civic Energy';energyFrame.loading='eager';
+ const energyLink=energyLive.querySelector('a');energyLink.href='https://amandavalverde.design/civicenergy/';energyLink.innerHTML='View the website <span aria-hidden="true">'+externalArrow+'</span>';energyLink.setAttribute('aria-label','View Civic Energy (opens in a new tab)');
+ const energyFrame=energyLive.querySelector('iframe');energyFrame.src='https://amandavalverde.design/civicenergy/';energyFrame.title='Live preview of Civic Energy';energyFrame.loading='eager';
  const galleryCards=[...projects,aboutCard];
  const render=i=>{active=(i+entries.length)%entries.length;galleryCards.forEach((card,n)=>card.hidden=n!==active);progress.value=active+1;panel.querySelector('#browse-title').textContent=entries[active].id==='about'?'Let’s make the complicated feel possible.':'Explore the work';panel.querySelector('.browse-counter').textContent=`${String(active+1).padStart(2,'0')} / 06`;};
  // Scale the complete composition uniformly; retain all internal geometry.
@@ -401,3 +401,62 @@ window.addEventListener('message',event=>{if(event.origin!==location.origin||eve
  window.addEventListener('hashchange',()=>{if(!mode)return;const target=document.getElementById(location.hash.slice(1));if(target?.matches('.project,.about-section')){target.classList.add('browse-selected');if(mode==='gallery')fitBrowse();target.scrollIntoView({block:'start'});}else if(target?.id==='top')setMode(null);});
  const align=()=>{const top=document.querySelector('.quick-top'),controls=document.querySelector('.browse-controls');controls.style.right=top.style.right;controls.style.transform=top.style.transform;};window.addEventListener('resize',align);requestAnimationFrame(align);
 })();
+
+// Align the About heading, rather than the section's decorative top padding.
+// Measure the responsive toolbar so mobile browser chrome and resizing are safe.
+const aboutSection = document.getElementById('about');
+const syncAboutAnchor = () => {
+  if (!header || !aboutSection) return;
+  const padding = parseFloat(getComputedStyle(aboutSection).paddingTop) || 0;
+  aboutSection.style.scrollMarginTop = `${header.getBoundingClientRect().height + 16 - padding}px`;
+};
+syncAboutAnchor();
+new ResizeObserver(syncAboutAnchor).observe(header);
+new ResizeObserver(syncAboutAnchor).observe(aboutSection);
+window.addEventListener('resize', syncAboutAnchor, { passive: true });
+
+// Warm every case-study image, including images in closed nested disclosures.
+// Start when the page is ready and use two low-priority requests at a time.
+const warmCaseStudyImages = () => {
+  const images = [...document.querySelectorAll('.project img')];
+  let next = 0;
+  const warmNext = () => {
+    const img = images[next++];
+    if (!img) return;
+    if (img.complete && img.naturalWidth) {
+      warmNext();
+      return;
+    }
+    img.decoding = 'async';
+    img.fetchPriority = 'low';
+    const done = () => {
+      img.removeEventListener('load', done);
+      img.removeEventListener('error', done);
+      warmNext();
+    };
+    img.addEventListener('load', done);
+    img.addEventListener('error', done);
+    img.loading = 'eager';
+  };
+  warmNext();
+  warmNext();
+};
+const scheduleCaseStudyImages = () => {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(warmCaseStudyImages, { timeout: 2000 });
+  } else {
+    setTimeout(warmCaseStudyImages, 300);
+  }
+};
+scheduleCaseStudyImages();
+
+// Portrait design rule: the arch is always a semicircle, even in tall layouts.
+const portraitArcObserver = new ResizeObserver((entries) => {
+  entries.forEach(({ target }) => {
+    const radius = target.offsetWidth / 2;
+    target.style.borderRadius = `${radius}px ${radius}px 0 0`;
+  });
+});
+document.querySelectorAll('.portrait-frame, .browse-portrait').forEach((frame) => {
+  portraitArcObserver.observe(frame);
+});

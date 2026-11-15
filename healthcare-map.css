@@ -10,3 +10,58 @@ body{font-family:Manrope,Arial,sans-serif}h1,h2,h3,.eyebrow{font-family:Batica,M
 .notes-shell{position:sticky;top:0;align-self:start;min-width:0}#notes{max-height:min(720px,calc(100svh - 24px))}.notes-more{width:100%}@media(max-width:1000px){.notes-shell{grid-column:1/-1;position:relative}#notes{max-height:480px}}
 
 #notes ul{list-style:none;padding:0}#notes li{border-top:1px solid #c8c8c0;padding:14px 0}#notes li p{margin:8px 0}.relationship-label{font-weight:700}#notes li button{margin-top:4px;font-size:11px;padding:6px 8px}
+
+/* Standalone explorer fills the viewport; embeds retain their natural height. */
+html.standalone-map, .standalone-map body { height:100%; }
+.standalone-map body { height:100dvh; display:flex; flex-direction:column; overflow:hidden; }
+.standalone-map body > header { flex:none; }
+.standalone-map main { flex:1; min-height:0; overflow:hidden; }
+.standalone-map .canvas-wrap { min-height:0; overflow:hidden; }
+.standalone-map #canvas { flex:1; min-height:0; height:auto; }
+.standalone-map #canvas > svg { height:100%; }
+.standalone-map .toolbar, .standalone-map .hint { flex:none; }
+.standalone-map .filters { min-height:0; max-height:none; overflow:auto; }
+.standalone-map .notes-shell { min-height:0; overflow:hidden; }
+.standalone-map #notes { height:100%; max-height:none; overflow:auto; }
+@media (max-width:899px) {
+ .standalone-map main { display:grid; grid-template-columns:180px minmax(0,1fr); grid-template-rows:minmax(0,1fr) minmax(0,25%); }
+ .standalone-map .notes-shell { grid-column:1/-1; }
+}
+@media (max-width:600px) {
+ .standalone-map body > header { padding:12px 16px; }
+ .standalone-map header h1 { font-size:20px; }
+ .standalone-map header p { display:none; }
+ .standalone-map main { grid-template-columns:minmax(0,1fr); grid-template-rows:minmax(0,20%) minmax(0,1fr) minmax(0,23%); }
+ .standalone-map .filters { padding:8px 16px; }
+ .standalone-map .hint { margin:5px; }
+}
+
+/* Adjustable, collapsible filter sidebar. */
+@media (min-width:900px) {
+ body main { grid-template-columns:var(--filters-width,180px) 14px minmax(240px,1fr) 14px var(--notes-width,300px); }
+ body .notes-shell { grid-column:5; }
+ .filter-divider { display:flex; position:relative; align-items:center; justify-content:center; min-width:14px; padding:0; border:0; border-inline:1px solid #b8b8b0; background:#e0ded8; cursor:col-resize; touch-action:none; }
+ .filter-divider::before { content:''; width:3px; height:44px; border-radius:3px; background:currentColor; }
+ .filter-divider:hover,.filter-divider:focus-visible { background:#131610; color:#f0eeea; }
+ .filter-collapse { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:24px; height:48px; padding:0; background:#f0eeea; z-index:2; font-size:20px; line-height:1; }
+ main.filters-collapsed { grid-template-columns:0 28px minmax(240px,1fr) 14px var(--notes-width,300px); }
+ .filters-collapsed > .filters { visibility:hidden; padding:0; border:0; overflow:hidden; }
+ .filters-collapsed .filter-divider { cursor:default; }
+ .filters-collapsed .filter-divider::before { display:none; }
+ .filters-collapsed .filter-collapse { width:28px; border-inline:0; }
+}
+@media (max-width:899px) { .filter-divider { display:none; } }
+
+@media (min-width:900px) {
+ /* The divider signals resizing; its button separately signals collapsing. */
+ .filter-collapse { color:#131610; cursor:pointer; }
+ .filter-collapse:hover,.filter-collapse:focus-visible { background:#131610; color:#f0eeea; }
+ main:not(.filters-collapsed) .filter-divider:hover:not(:has(.filter-collapse:hover)) .filter-collapse {
+   font-size:0;
+   color:#131610;
+ }
+ main:not(.filters-collapsed) .filter-divider:hover:not(:has(.filter-collapse:hover)) .filter-collapse::after {
+   content:'↔';
+   font-size:20px;
+ }
+}
